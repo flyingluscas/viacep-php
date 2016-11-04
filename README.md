@@ -3,6 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
+[![StyleCI][ico-styleci]][link-styleci]
 [![Coverage Status][ico-code-climate]][link-code-climate]
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
@@ -19,10 +20,7 @@ $ composer require flyingluscas/viacep-php
 
 ## Usage
 
-``` php
-$skeleton = new FlyingLuscas\ViaCEP();
-echo $skeleton->echoPhrase('Hello, League!');
-```
+Coming soon...
 
 ## Change log
 
@@ -54,12 +52,14 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-version]: https://img.shields.io/packagist/v/flyingluscas/viacep-php.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/flyingluscas/viacep-php/master.svg?style=flat-square
+[ico-styleci]: https://styleci.io/repos/72872228/shield?branch=master
 [ico-code-climate]: https://img.shields.io/codeclimate/coverage/github/flyingluscas/viacep-php.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/codeclimate/github/flyingluscas/viacep-php.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/flyingluscas/viacep-php.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/flyingluscas/viacep-php
 [link-travis]: https://travis-ci.org/flyingluscas/viacep-php
+[link-styleci]: https://styleci.io/repos/72872228
 [link-code-climate]: https://codeclimate.com/github/flyingluscas/viacep-php/coverage
 [link-code-quality]: https://codeclimate.com/github/flyingluscas/viacep-php/code
 [link-downloads]: https://packagist.org/packages/flyingluscas/viacep-php
