@@ -26,26 +26,4 @@ class AddressTest extends TestCase
 
         $this->assertJson($address->toJson(), 'Invalid json address');
     }
-
-    /**
-     * Make stub address.
-     *
-     * @param  array  $data
-     *
-     * @return array
-     */
-    protected function makeAddress(array $data = [])
-    {
-        return array_merge([
-            'cep' => '01001-000',
-            'logradouro' => 'Praça da Sé',
-            'complemento' => 'lado ímpar',
-            'bairro' => 'Sé',
-            'localidade' => 'São Paulo',
-            'uf' => 'SP',
-            'unidade' => '',
-            'ibge' => '3550308',
-            'gia' => '1004'
-        ], $data);
-    }
 }

@@ -58,7 +58,7 @@ class Address
      *
      * @param array $attributes
      */
-    public function __construct(array $attributes)
+    public function __construct(array $attributes = [])
     {
         $this->assign($attributes);
     }
@@ -70,15 +70,17 @@ class Address
      *
      * @return self
      */
-    private function assign(array $attributes)
+    public function assign(array $attributes)
     {
-        $this->zipCode = $attributes['cep'];
-        $this->street = $attributes['logradouro'];
-        $this->complement = $attributes['complemento'];
-        $this->neighborhood = $attributes['bairro'];
-        $this->city = $attributes['localidade'];
-        $this->state = $attributes['uf'];
-        $this->ibge = $attributes['ibge'];
+        if ($attributes) {
+            $this->zipCode = $attributes['cep'];
+            $this->street = $attributes['logradouro'];
+            $this->complement = $attributes['complemento'];
+            $this->neighborhood = $attributes['bairro'];
+            $this->city = $attributes['localidade'];
+            $this->state = $attributes['uf'];
+            $this->ibge = $attributes['ibge'];
+        }
 
         return $this;
     }
