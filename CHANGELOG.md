@@ -4,19 +4,7 @@ All Notable changes to `viacep-php` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## NEXT - YYYY-MM-DD
+## v1.0.0 - 2016-11-11
 
 ### Added
-- Nothing
-
-### Deprecated
-- Nothing
-
-### Fixed
-- Nothing
-
-### Removed
-- Nothing
-
-### Security
-- Nothing
+- Search addresses by zip code using the [ViaCEP](https://viacep.com.br) API.
