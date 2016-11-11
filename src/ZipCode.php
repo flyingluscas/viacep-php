@@ -15,6 +15,13 @@ class ZipCode
     protected $http;
 
     /**
+     * Address.
+     *
+     * @var \FlyingLuscas\ViaCEP\Address
+     */
+    protected $address;
+
+    /**
      * Creta a new ZipCode class instance.
      *
      * @param \GuzzleHttp\ClientInterface $http
@@ -22,6 +29,7 @@ class ZipCode
     public function __construct(ClientInterface $http = null)
     {
         $this->http = $http ?: new Client;
+        $this->address = new Address;
     }
 
     /**
@@ -36,6 +44,10 @@ class ZipCode
         $response = $this->http->request('POST', '//viacep.com.br/ws/'.$zipCode.'/json');
         $attributes = json_decode($response->getBody(), true);
 
-        return (new Address)->assign($attributes);
+        if (array_key_exists('error', $attributes)) {
+            return $this->address;
+        }
+
+        return $this->address->fill($attributes);
     }
 }

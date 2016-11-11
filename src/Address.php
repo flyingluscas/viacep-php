@@ -60,17 +60,17 @@ class Address
      */
     public function __construct(array $attributes = [])
     {
-        $this->assign($attributes);
+        $this->fill($attributes);
     }
 
     /**
-     * Assign address attributes.
+     * Fill address attributes.
      *
      * @param  array  $attributes
      *
      * @return self
      */
-    public function assign(array $attributes)
+    public function fill(array $attributes)
     {
         if ($attributes) {
             $this->zipCode = $attributes['cep'];
