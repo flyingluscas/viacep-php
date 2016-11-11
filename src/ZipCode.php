@@ -3,7 +3,6 @@
 namespace FlyingLuscas\ViaCEP;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\ClientInterface;
 
 class ZipCode
