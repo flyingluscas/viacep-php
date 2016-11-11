@@ -8,7 +8,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-PHP library for consulting zip codes using the [ViaCEP](https://viacep.com.br) API. 
+Search for addresses by zip code using the [ViaCEP](https://viacep.com.br) REST API.
 
 ## Install
 
@@ -20,7 +20,52 @@ $ composer require flyingluscas/viacep-php
 
 ## Usage
 
-Coming soon...
+``` php
+use FlyingLuscas\ViaCEP\ZipCode;
+
+$zipcode = new ZipCode;
+
+```
+
+### Array
+
+``` php
+$address = $zipcode->find('01001-000')->toArray();
+
+/*
+The returned result would be something like this:
+
+[
+    'zipCode' => '01001-000',
+    'street' => 'Praça da Sé',
+    'complement' => 'lado ímpar',
+    'neighborhood' => 'Sé',
+    'city' => 'São Paulo',
+    'state' => 'SP',
+    'ibge' => '3550308',
+]
+*/
+```
+
+### JSON
+
+``` php
+$address = $zipcode->find('01001-000')->toJson();
+
+/*
+The returned result would be something like this:
+
+{
+    "zipCode": "01001-000",
+    "street": "Praça da Sé",
+    "complement": "lado ímpar",
+    "neighborhood": "Sé",
+    "city": "São Paulo",
+    "state": "SP",
+    "ibge": "3550308"
+}
+*/
+```
 
 ## Change log
 
