@@ -15,7 +15,7 @@ class ZipCodeTest extends TestCase
     public function it_get_empty_address_in_case_of_errors()
     {
         $error = [
-            'error' => true,
+            'erro' => true,
         ];
 
         $mock = new MockHandler([

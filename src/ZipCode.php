@@ -44,7 +44,7 @@ class ZipCode
         $response = $this->http->request('POST', '//viacep.com.br/ws/'.$zipCode.'/json');
         $attributes = json_decode($response->getBody(), true);
 
-        if (array_key_exists('error', $attributes)) {
+        if (array_key_exists('erro', $attributes) && $attributes['erro'] === true) {
             return $this->address;
         }
 
