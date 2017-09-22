@@ -41,7 +41,7 @@ class ZipCode
      */
     public function find($zipCode)
     {
-        $response = $this->http->request('POST', '//viacep.com.br/ws/'.$zipCode.'/json');
+        $response = $this->http->request('GET', '//viacep.com.br/ws/'.$zipCode.'/json');
         $attributes = json_decode($response->getBody(), true);
 
         if (array_key_exists('erro', $attributes) && $attributes['erro'] === true) {
