@@ -9,10 +9,7 @@ use GuzzleHttp\Handler\MockHandler;
 
 class ZipCodeTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function it_get_empty_address_in_case_of_errors()
+    public function testGetEmptyAddressInCaseOfErrors()
     {
         $error = [
             'erro' => true,
@@ -35,10 +32,7 @@ class ZipCodeTest extends TestCase
         }, get_object_vars($address));
     }
 
-    /**
-     * @test
-     */
-    public function it_can_find_address()
+    public function testFindAddress()
     {
         $stub = $this->makeAddress();
 
