@@ -11,19 +11,7 @@ class ZipCodeTest extends TestCase
 {
     public function testGetEmptyAddressInCaseOfErrors()
     {
-        $error = [
-            'erro' => true,
-        ];
-
-        $mock = new MockHandler([
-            new Response(200, [], json_encode($error)),
-        ]);
-
-        $client = new Client([
-            'handler' => HandlerStack::create($mock),
-        ]);
-
-        $address = (new ZipCode($client))->find('99999-999');
+        $address = (new ZipCode)->find('99999-999');
 
         $this->assertInstanceOf(Address::class, $address);
 
@@ -34,19 +22,10 @@ class ZipCodeTest extends TestCase
 
     public function testFindAddress()
     {
-        $stub = $this->makeAddress();
-
-        $mock = new MockHandler([
-            new Response(200, [], json_encode($stub)),
-        ]);
-
-        $client = new Client([
-            'handler' => HandlerStack::create($mock),
-        ]);
-
-        $address = (new ZipCode($client))->find('99999-999');
+        $zipcode = '01001-000';
+        $address = (new ZipCode)->find($zipcode);
 
         $this->assertInstanceOf(Address::class, $address);
-        $this->assertEquals($stub['cep'], $address->zipCode);
+        $this->assertEquals($zipcode, $address->zipCode);
     }
 }
