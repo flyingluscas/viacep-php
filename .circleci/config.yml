@@ -17,9 +17,17 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
+      - restore_cache:
+          keys:
+            - vendor-v1-psr2-{{ checksum "composer.json" }}
       - run:
           name: Composer install
           command: composer install --no-progress --no-interaction
+      - save_cache:
+          key: vendor-v1-psr2-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+            - composer.lock
       - run:
           name: Check PSR2 standards
           command: composer check-style
@@ -30,9 +38,17 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
+      - restore_cache:
+          keys:
+            - vendor-v1-php56-{{ checksum "composer.json" }}
       - run:
           name: Composer install
           command: composer install --no-progress --no-interaction
+      - save_cache:
+          key: vendor-v1-php56-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+            - composer.lock
       - run:
           name: Composer test
           command: composer test -- --coverage-text
@@ -47,9 +63,17 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
+      - restore_cache:
+          keys:
+            - vendor-v1-php70-{{ checksum "composer.json" }}
       - run:
           name: Composer install
           command: composer install --no-progress --no-interaction
+      - save_cache:
+          key: vendor-v1-php70-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+            - composer.lock
       - run:
           name: Composer test
           command: composer test
@@ -60,9 +84,17 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
+      - restore_cache:
+          keys:
+            - vendor-v1-php71-{{ checksum "composer.json" }}
       - run:
           name: Composer install
           command: composer install --no-progress --no-interaction
+      - save_cache:
+          key: vendor-v1-php71-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+            - composer.lock
       - run:
           name: Composer test
           command: composer test
@@ -73,9 +105,17 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
+      - restore_cache:
+          keys:
+            - vendor-v1-php72-{{ checksum "composer.json" }}
       - run:
           name: Composer install
           command: composer install --no-progress --no-interaction
+      - save_cache:
+          key: vendor-v1-php72-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+            - composer.lock
       - run:
           name: Composer test
           command: composer test
