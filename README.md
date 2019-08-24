@@ -28,7 +28,7 @@ $zipcode = new ZipCode;
 ### Array
 
 ``` php
-$address = $zipcode->find('01001-000')->toArray();
+$address = $zipcode->findByCep('01001-000')->toArray();
 
 /*
 The returned result would be something like this:
@@ -48,7 +48,7 @@ The returned result would be something like this:
 ### JSON
 
 ``` php
-$address = $zipcode->find('01001-000')->toJson();
+$address = $zipcode->findByCep('01001-000')->toJson();
 
 /*
 The returned result would be something like this:
