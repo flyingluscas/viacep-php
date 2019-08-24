@@ -1,11 +1,22 @@
 version: '2'
 
 jobs:
+  checkout:
+    docker:
+      - image: circleci/php
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - ./
+
   php56:
     docker:
       - image: php:5.6-alpine
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/project
       - run:
           name: Install xDebug Extension
           command: |
@@ -40,7 +51,8 @@ jobs:
     docker:
       - image: php:7.0-alpine
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/project
       - run:
           name: Install xDebug Extension
           command: |
@@ -69,7 +81,8 @@ jobs:
     docker:
       - image: php:7.1-alpine
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/project
       - run:
           name: Install xDebug Extension
           command: |
@@ -98,7 +111,8 @@ jobs:
     docker:
       - image: php:7.2-alpine
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/project
       - run:
           name: Install xDebug Extension
           command: |
@@ -127,7 +141,16 @@ workflows:
   version: 2
   tests:
     jobs:
-      - php56
-      - php70
-      - php71
-      - php72
+      - checkout
+      - php56:
+          requires:
+            - checkout
+      - php70:
+          requires:
+            - checkout
+      - php71:
+          requires:
+            - checkout
+      - php72:
+          requires:
+            - checkout
