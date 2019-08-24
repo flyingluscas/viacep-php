@@ -26,23 +26,12 @@ jobs:
 
   php56:
     docker:
-      - image: php:5.6-alpine
+      - image: circleci/php:5.6
     steps:
       - attach_workspace:
           at: ~/project
       - run:
-          name: Install xDebug Extension
-          command: |
-            apk add --no-cache --no-progress g++ make autoconf bash
-            pecl -q install xdebug-2.5.5
-            docker-php-ext-enable xdebug
-      - run:
-          name: Install Composer
-          command: |
-            curl -sS https://getcomposer.org/installer | php
-            mv composer.phar /usr/local/bin/composer
-      - run:
-          name: Composer Install
+          name: Composer install
           command: composer install --no-progress --no-interaction
       - run:
           name: Composer test
@@ -54,23 +43,12 @@ jobs:
 
   php70:
     docker:
-      - image: php:7.0-alpine
+      - image: circleci/php:7.0
     steps:
       - attach_workspace:
           at: ~/project
       - run:
-          name: Install xDebug Extension
-          command: |
-            apk add --no-cache --no-progress g++ make autoconf
-            pecl -q install xdebug
-            docker-php-ext-enable xdebug
-      - run:
-          name: Install Composer
-          command: |
-            curl -sS https://getcomposer.org/installer | php
-            mv composer.phar /usr/local/bin/composer
-      - run:
-          name: Composer Install
+          name: Composer install
           command: composer install --no-progress --no-interaction
       - run:
           name: Composer test
@@ -78,23 +56,12 @@ jobs:
 
   php71:
     docker:
-      - image: php:7.1-alpine
+      - image: circleci/php:7.1
     steps:
       - attach_workspace:
           at: ~/project
       - run:
-          name: Install xDebug Extension
-          command: |
-            apk add --no-cache --no-progress g++ make autoconf
-            pecl -q install xdebug
-            docker-php-ext-enable xdebug
-      - run:
-          name: Install Composer
-          command: |
-            curl -sS https://getcomposer.org/installer | php
-            mv composer.phar /usr/local/bin/composer
-      - run:
-          name: Composer Install
+          name: Composer install
           command: composer install --no-progress --no-interaction
       - run:
           name: Composer test
@@ -102,23 +69,12 @@ jobs:
 
   php72:
     docker:
-      - image: php:7.2-alpine
+      - image: circleci/php:7.2
     steps:
       - attach_workspace:
           at: ~/project
       - run:
-          name: Install xDebug Extension
-          command: |
-            apk add --no-cache --no-progress g++ make autoconf
-            pecl -q install xdebug
-            docker-php-ext-enable xdebug
-      - run:
-          name: Install Composer
-          command: |
-            curl -sS https://getcomposer.org/installer | php
-            mv composer.phar /usr/local/bin/composer
-      - run:
-          name: Composer Install
+          name: Composer install
           command: composer install --no-progress --no-interaction
       - run:
           name: Composer test
