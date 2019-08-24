@@ -45,17 +45,12 @@ jobs:
           name: Composer Install
           command: composer install --no-progress --no-interaction
       - run:
-          name: Composer Test
+          name: Composer test
           command: composer test -- --coverage-text
-      - run:
-          name: Upload Code Coverage
-          command: |
-            curl -s https://codecov.io/bash > .codecov
-            chmod +x .codecov
-            ./.codecov
-      - store_artifacts:
-          path: build/coverage
-          destination: coverage
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - ./
 
   php70:
     docker:
@@ -78,11 +73,8 @@ jobs:
           name: Composer Install
           command: composer install --no-progress --no-interaction
       - run:
-          name: Composer Test
-          command: composer test -- --coverage-text
-      - store_artifacts:
-          path: build/coverage
-          destination: coverage
+          name: Composer test
+          command: composer test
 
   php71:
     docker:
@@ -105,11 +97,8 @@ jobs:
           name: Composer Install
           command: composer install --no-progress --no-interaction
       - run:
-          name: Composer Test
-          command: composer test -- --coverage-text
-      - store_artifacts:
-          path: build/coverage
-          destination: coverage
+          name: Composer test
+          command: composer test
 
   php72:
     docker:
@@ -132,11 +121,21 @@ jobs:
           name: Composer Install
           command: composer install --no-progress --no-interaction
       - run:
-          name: Composer Test
-          command: composer test -- --coverage-text
-      - store_artifacts:
-          path: build/coverage
-          destination: coverage
+          name: Composer test
+          command: composer test
+
+  coverage:
+    docker:
+      - image: circleci/php
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Upload Code Coverage
+          command: |
+            curl -s https://codecov.io/bash > .codecov
+            chmod +x .codecov
+            ./.codecov
 
 workflows:
   version: 2
@@ -158,3 +157,6 @@ workflows:
       - php72:
           requires:
             - checkout
+      - coverage:
+          requires:
+            - php56
