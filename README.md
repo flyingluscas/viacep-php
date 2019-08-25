@@ -18,20 +18,19 @@ $ composer require flyingluscas/viacep-php
 
 ## Usage
 
-``` php
-use FlyingLuscas\ViaCEP\ZipCode;
+### findByZipCode
 
-$zipcode = new ZipCode;
+Find address by zip code.
 
-```
+```php
+use FlyingLuscas\ViaCEP\ViaCEP;
 
-### Array
+$viacep = new ViaCEP;
 
-``` php
-$address = $zipcode->findByCep('01001-000')->toArray();
+$address = $viacep->findByZipCode('01001-000')->toArray();
 
 /*
-The returned result would be something like this:
+Should return something like this:
 
 [
     'zipCode' => '01001-000',
@@ -43,15 +42,11 @@ The returned result would be something like this:
     'ibge' => '3550308',
 ]
 */
-```
 
-### JSON
-
-``` php
-$address = $zipcode->findByCep('01001-000')->toJson();
+$address = $viacep->findByZipCode('01001-000')->toJson();
 
 /*
-The returned result would be something like this:
+Should return something like this:
 
 {
     "zipCode": "01001-000",
@@ -62,6 +57,43 @@ The returned result would be something like this:
     "state": "SP",
     "ibge": "3550308"
 }
+*/
+```
+
+### findByStreetName
+
+Search for addresses using state, city and a street name.
+
+```php
+use FlyingLuscas\ViaCEP\ViaCEP;
+
+$viacep = new ViaCEP;
+
+$addresses = $viacep->findByStreetName('SP', 'São Paulo', 'Gomes de Carvalho');
+
+/*
+Should return something like this:
+
+[
+    [
+        'zipCode' => '01001-000',
+        'street' => 'Praça da Sé',
+        'complement' => 'lado ímpar',
+        'neighborhood' => 'Sé',
+        'city' => 'São Paulo',
+        'state' => 'SP',
+        'ibge' => '3550308',
+    ],
+    [
+        'zipCode' => '01001-000',
+        'street' => 'Praça da Sé',
+        'complement' => 'lado ímpar',
+        'neighborhood' => 'Sé',
+        'city' => 'São Paulo',
+        'state' => 'SP',
+        'ibge' => '3550308',
+    ]
+]
 */
 ```
 
